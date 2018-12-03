@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Travelers/ViewControllers/HomeViewController.swift"
-            timestampString = "565538280.63614"
+            timestampString = "565562263.7533441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "loadPosts()"
             landmarkType = "7">
          </BreakpointContent>

@@ -70,6 +70,7 @@ class SignInViewController: UIViewController {
         signInButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
     }
     
+    ///touching the sign in button and interacting with the firebase authetication
     @IBAction func signIn_TouchUpInside(_ sender: Any) {
         view.endEditing(true)
         ProgressHUD.show("Waiting...", interaction: false)

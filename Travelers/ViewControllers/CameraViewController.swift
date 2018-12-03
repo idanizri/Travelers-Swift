@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 class CameraViewController: UIViewController {
     
     @IBOutlet weak var removeButton: UIBarButtonItem!
@@ -90,8 +91,11 @@ class CameraViewController: UIViewController {
         let postsRefrence = ref.child("posts")
         let newPostId = postsRefrence.childByAutoId().key
         let newPostRefrence = postsRefrence.child(newPostId!)
-        newPostRefrence.setValue(["photoURL": photoURL])
-        newPostRefrence.setValue(["photoURL": photoURL, "caption": captionTextView.text!]) { (error, ref) in
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        let currentUserId = currentUser.uid
+        newPostRefrence.setValue(["uid": currentUserId, "photoURL": photoURL, "caption": captionTextView.text!]) { (error, ref) in
             if error != nil{
                 ProgressHUD.showError(error!.localizedDescription)
                 return
@@ -106,6 +110,7 @@ class CameraViewController: UIViewController {
         handlePost()
     }
     
+    //clean all the data on the the upload method
     func clean(){
         self.captionTextView.text = ""
         self.photo.image = UIImage(named: "placeholder-photo")
