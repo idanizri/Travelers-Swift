@@ -12,7 +12,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="bLi-Lk-n8J">
             <objects>
-                <viewController id="w1K-OF-OWV" customClass="SignInViewController" customModule="Travelers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="w1K-OF-OWV" customClass="SignInViewController" customModule="Travelers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kVu-55-EhX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,54 +48,56 @@
                                         </state>
                                         <connections>
                                             <action selector="SignUpBtn_TouchUpInside:" destination="6f7-E0-lN8" eventType="touchUpInside" id="yR3-Oe-FZB"/>
-                                            <segue destination="z7t-7S-Hh8" kind="presentation" id="Vq0-cO-bkG"/>
+                                            <action selector="signIn_TouchUpInside:" destination="w1K-OF-OWV" eventType="touchUpInside" id="iMu-LZ-QN9"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5aL-WO-zQW">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="1BE-Zs-Ugy"/>
-                                </constraints>
-                                <state key="normal" title="Don't have an account">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="zFv-6K-WzJ" kind="presentation" id="xee-lQ-Tal"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travelers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaS-4k-CgB">
                                 <rect key="frame" x="93.5" y="137" width="188.5" height="36.5"/>
                                 <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="36"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fat-3s-twy">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <color key="backgroundColor" white="0.33000000000000002" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="nSh-XR-iEJ"/>
+                                </constraints>
+                                <state key="normal" title="Don't have an acount?">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zFv-6K-WzJ" kind="presentation" id="WE1-hE-6nn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cKV-XL-AuE" firstAttribute="trailing" secondItem="5aL-WO-zQW" secondAttribute="trailing" id="BSK-GA-BSM"/>
-                            <constraint firstItem="5aL-WO-zQW" firstAttribute="leading" secondItem="cKV-XL-AuE" secondAttribute="leading" id="GyB-qE-YMN"/>
+                            <constraint firstItem="cKV-XL-AuE" firstAttribute="bottom" secondItem="Fat-3s-twy" secondAttribute="bottom" id="DDV-fi-sA9"/>
+                            <constraint firstItem="cKV-XL-AuE" firstAttribute="trailing" secondItem="Fat-3s-twy" secondAttribute="trailing" id="HC4-pu-GfB"/>
                             <constraint firstItem="LaS-4k-CgB" firstAttribute="top" secondItem="cKV-XL-AuE" secondAttribute="top" constant="117" id="Jj2-10-ept"/>
                             <constraint firstItem="zx2-US-dkM" firstAttribute="leading" secondItem="cKV-XL-AuE" secondAttribute="leading" constant="20" id="OYk-Qf-YLc"/>
                             <constraint firstItem="cKV-XL-AuE" firstAttribute="trailing" secondItem="zx2-US-dkM" secondAttribute="trailing" constant="20" id="azP-dH-2Gy"/>
                             <constraint firstItem="LaS-4k-CgB" firstAttribute="centerX" secondItem="kVu-55-EhX" secondAttribute="centerX" id="dMR-eG-dJR"/>
                             <constraint firstItem="zx2-US-dkM" firstAttribute="centerY" secondItem="kVu-55-EhX" secondAttribute="centerY" id="ghb-vt-PLF"/>
                             <constraint firstItem="zx2-US-dkM" firstAttribute="centerX" secondItem="kVu-55-EhX" secondAttribute="centerX" id="pro-ff-YBS"/>
-                            <constraint firstItem="cKV-XL-AuE" firstAttribute="bottom" secondItem="5aL-WO-zQW" secondAttribute="bottom" id="uZ4-aT-Fvr"/>
+                            <constraint firstItem="Fat-3s-twy" firstAttribute="leading" secondItem="cKV-XL-AuE" secondAttribute="leading" id="qJd-Mv-Bho"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cKV-XL-AuE"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="q18-kL-hMa" id="ltU-zp-Qcx"/>
                         <outlet property="passwordTextField" destination="ssd-sI-TRP" id="pWF-7e-CVi"/>
+                        <outlet property="signInButton" destination="Cnf-gv-wL6" id="qYF-1v-I3i"/>
+                        <segue destination="z7t-7S-Hh8" kind="presentation" identifier="signInToTabbarVC" id="tcW-nt-VWg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vI-bL-Fgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6f7-E0-lN8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="56.799999999999997" y="106.59670164917542"/>
+            <point key="canvasLocation" x="57" y="104"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="2Ob-aP-ac8">
@@ -160,7 +162,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="dismiss_OnClick:" destination="zFv-6K-WzJ" eventType="touchUpInside" id="Qtz-ZX-Aaj"/>
+                                    <action selector="dismiss_OnClick:" destination="zFv-6K-WzJ" eventType="touchUpInside" id="Yyy-kN-H6i"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="cjq-J5-GsY">
@@ -189,7 +191,9 @@
                         <outlet property="emailTextField" destination="KOF-B3-t2k" id="isy-ro-nmy"/>
                         <outlet property="passwordTextField" destination="k47-zf-JSO" id="ID7-K8-Ne0"/>
                         <outlet property="profileImage" destination="cjq-J5-GsY" id="Il7-0d-2tm"/>
+                        <outlet property="signUpButton" destination="qwN-5D-hVS" id="F69-je-uKw"/>
                         <outlet property="usernameTextField" destination="0sx-ra-F1g" id="qTS-mn-rfp"/>
+                        <segue destination="z7t-7S-Hh8" kind="presentation" identifier="signUpToTabbarVC" id="JFW-cY-lNs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2HX-Uk-pMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,4 +212,7 @@
     <resources>
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JFW-cY-lNs"/>
+    </inferredMetricsTieBreakers>
 </document>

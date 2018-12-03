@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84B0C7F821B56038003F29B9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C7F721B56038003F29B9 /* Post.swift */; };
+		84B0C7FB21B57707003F29B9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C7FA21B57707003F29B9 /* HomeTableViewCell.swift */; };
+		84C08BA421B537320019A1E2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08BA321B537320019A1E2 /* AuthService.swift */; };
+		84C08BA621B5409F0019A1E2 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08BA521B5409F0019A1E2 /* Config.swift */; };
+		84C08BAB21B542A40019A1E2 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84C08BA821B542A30019A1E2 /* ProgressHUD.bundle */; };
+		84C08BAC21B542A40019A1E2 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C08BAA21B542A40019A1E2 /* ProgressHUD.m */; };
 		84CF4C9421B43A78002CE263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CF4C9321B43A78002CE263 /* AppDelegate.swift */; };
 		84CF4C9B21B43A7A002CE263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84CF4C9A21B43A7A002CE263 /* Assets.xcassets */; };
 		84CF4C9E21B43A7A002CE263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CF4C9C21B43A7A002CE263 /* LaunchScreen.storyboard */; };
@@ -32,6 +38,14 @@
 		043D1AD23B5F767F26DCD30E /* Pods-Travelers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travelers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Travelers/Pods-Travelers.debug.xcconfig"; sourceTree = "<group>"; };
 		44B234B86E60EF94C7B14255 /* Pods-Travelers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travelers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Travelers/Pods-Travelers.release.xcconfig"; sourceTree = "<group>"; };
 		6BDF3BACE5D78F4DF0BA0700 /* Pods_Travelers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travelers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84B0C7F721B56038003F29B9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		84B0C7FA21B57707003F29B9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		84C08BA321B537320019A1E2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		84C08BA521B5409F0019A1E2 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		84C08BA721B542A20019A1E2 /* Travelers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Travelers-Bridging-Header.h"; sourceTree = "<group>"; };
+		84C08BA821B542A30019A1E2 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		84C08BA921B542A30019A1E2 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		84C08BAA21B542A40019A1E2 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		84CF4C9021B43A78002CE263 /* Travelers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CF4C9321B43A78002CE263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CF4C9A21B43A7A002CE263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +89,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		84B0C7F621B56029003F29B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84B0C7F721B56038003F29B9 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84B0C7F921B576E0003F29B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84B0C7FA21B57707003F29B9 /* HomeTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		84CF4C8721B43A78002CE263 = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +127,20 @@
 			isa = PBXGroup;
 			children = (
 				84CF4C9321B43A78002CE263 /* AppDelegate.swift */,
+				84C08BA321B537320019A1E2 /* AuthService.swift */,
+				84C08BA521B5409F0019A1E2 /* Config.swift */,
+				84B0C7F921B576E0003F29B9 /* Views */,
+				84B0C7F621B56029003F29B9 /* Model */,
 				84CF4CC121B45BDA002CE263 /* Storyboards */,
 				84CF4CC221B45BFC002CE263 /* ViewControllers */,
 				84CF4C9A21B43A7A002CE263 /* Assets.xcassets */,
 				84CF4C9C21B43A7A002CE263 /* LaunchScreen.storyboard */,
 				84CF4CC321B45DD7002CE263 /* GoogleService-Info.plist */,
 				84CF4C9F21B43A7A002CE263 /* Info.plist */,
+				84C08BA821B542A30019A1E2 /* ProgressHUD.bundle */,
+				84C08BA921B542A30019A1E2 /* ProgressHUD.h */,
+				84C08BAA21B542A40019A1E2 /* ProgressHUD.m */,
+				84C08BA721B542A20019A1E2 /* Travelers-Bridging-Header.h */,
 			);
 			path = Travelers;
 			sourceTree = "<group>";
@@ -177,6 +215,7 @@
 				TargetAttributes = {
 					84CF4C8F21B43A78002CE263 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -203,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C08BAB21B542A40019A1E2 /* ProgressHUD.bundle in Resources */,
 				84CF4C9E21B43A7A002CE263 /* LaunchScreen.storyboard in Resources */,
 				84CF4CBC21B45326002CE263 /* Camera.storyboard in Resources */,
 				84CF4CB821B452FC002CE263 /* Home.storyboard in Resources */,
@@ -270,10 +310,15 @@
 			files = (
 				84CF4CAA21B43F42002CE263 /* SignUpViewController.swift in Sources */,
 				84CF4CA821B43C84002CE263 /* SignInViewController.swift in Sources */,
+				84B0C7FB21B57707003F29B9 /* HomeTableViewCell.swift in Sources */,
 				84CF4C9421B43A78002CE263 /* AppDelegate.swift in Sources */,
+				84B0C7F821B56038003F29B9 /* Post.swift in Sources */,
+				84C08BA421B537320019A1E2 /* AuthService.swift in Sources */,
 				84CF4CAC21B44D40002CE263 /* HomeViewController.swift in Sources */,
 				84CF4CB221B44D89002CE263 /* ActivityViewController.swift in Sources */,
+				84C08BAC21B542A40019A1E2 /* ProgressHUD.m in Sources */,
 				84CF4CAE21B44D6B002CE263 /* DiscoverViewController.swift in Sources */,
+				84C08BA621B5409F0019A1E2 /* Config.swift in Sources */,
 				84CF4CB421B44D93002CE263 /* ProfileViewController.swift in Sources */,
 				84CF4CB021B44D7E002CE263 /* CameraViewController.swift in Sources */,
 			);
@@ -414,6 +459,7 @@
 			baseConfigurationReference = 043D1AD23B5F767F26DCD30E /* Pods-Travelers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Travelers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -422,6 +468,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.IdanOmer.Travelers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Travelers/Travelers-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -432,6 +480,7 @@
 			baseConfigurationReference = 44B234B86E60EF94C7B14255 /* Pods-Travelers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Travelers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -440,6 +489,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.IdanOmer.Travelers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Travelers/Travelers-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
