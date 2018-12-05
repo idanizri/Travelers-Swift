@@ -12,13 +12,18 @@ class User{
     var email: String?
     var profileImageURL: String?
     var username: String?
+    var id: String?
+    var isFollowing: Bool?
 }
 extension User{
-    static func transformUser(dict: [String:Any]) -> User{
+    
+    //get the user from the databsae and transfrom it into a class user
+    static func transformUser(dict: [String:Any], key: String) -> User{
         let user = User()
         user.email = dict["email"] as? String
         user.username = dict["username"] as? String
         user.profileImageURL = dict["profileImageURL"] as? String
+        user.id = key
         return user
     }
 }

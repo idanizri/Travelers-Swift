@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseAuth
 class CameraViewController: UIViewController {
     
     @IBOutlet weak var removeButton: UIBarButtonItem!
@@ -66,43 +63,12 @@ class CameraViewController: UIViewController {
         
         //push the photo to the storage unit
         if let profileImag = self.selectedImage, let imageData = profileImag.jpegData(compressionQuality: 0.1) {
-            let photoIdString = NSUUID().uuidString
-            let storageRef = Storage.storage().reference(forURL: Config.STORAGE_ROOT_REF).child("posts").child(photoIdString)
-            storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
-                if error != nil{
-                    return
-                }
-                storageRef.downloadURL { (url, error) in
-                    guard let photoURL = url?.absoluteString else {
-                        // Uh-oh, an error occurred!
-                        return
-                    }
-                    self.sendDataToDatabase(photoURL: photoURL)
-                }
-            })
+            HelperService.uploadDataToServer(data: imageData, caption: captionTextView.text!) {
+                self.clean()
+                self.tabBarController?.selectedIndex = 0
+            }
         }else{
             ProgressHUD.showError("Profile Image can't be empty")
-        }
-    }
-    //send selected photo to the database
-    func sendDataToDatabase(photoURL: String){
-        //put user at the database
-        let ref = Database.database().reference()
-        let postsRefrence = ref.child("posts")
-        let newPostId = postsRefrence.childByAutoId().key
-        let newPostRefrence = postsRefrence.child(newPostId!)
-        guard let currentUser = Auth.auth().currentUser else {
-            return
-        }
-        let currentUserId = currentUser.uid
-        newPostRefrence.setValue(["uid": currentUserId, "photoURL": photoURL, "caption": captionTextView.text!]) { (error, ref) in
-            if error != nil{
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            ProgressHUD.showSuccess("Success")
-            self.clean()
-            self.tabBarController?.selectedIndex = 0
         }
     }
     @IBAction func remove_TouchUpInside(_ sender: Any) {

@@ -13,6 +13,12 @@
 		84B0C7FD21B585D3003F29B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C7FC21B585D3003F29B9 /* User.swift */; };
 		84B0C7FF21B599F5003F29B9 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C7FE21B599F5003F29B9 /* CommentTableViewCell.swift */; };
 		84B0C80121B59A25003F29B9 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0C80021B59A25003F29B9 /* CommentViewController.swift */; };
+		84BE159721B69B7900307CF6 /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE159621B69B7900307CF6 /* PostAPI.swift */; };
+		84BE159921B69D0100307CF6 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE159821B69D0100307CF6 /* UserAPI.swift */; };
+		84BE159C21B69E5A00307CF6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE159B21B69E5A00307CF6 /* API.swift */; };
+		84BE159E21B69EDA00307CF6 /* CommentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE159D21B69EDA00307CF6 /* CommentAPI.swift */; };
+		84BE15A021B6A17700307CF6 /* Post_CommentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE159F21B6A17700307CF6 /* Post_CommentAPI.swift */; };
+		84BE15A221B6BDD500307CF6 /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE15A121B6BDD500307CF6 /* HeaderProfileCollectionReusableView.swift */; };
 		84C08BA421B537320019A1E2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08BA321B537320019A1E2 /* AuthService.swift */; };
 		84C08BA621B5409F0019A1E2 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C08BA521B5409F0019A1E2 /* Config.swift */; };
 		84C08BAB21B542A40019A1E2 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84C08BA821B542A30019A1E2 /* ProgressHUD.bundle */; };
@@ -35,6 +41,12 @@
 		84CF4CBE21B4533F002CE263 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CF4CBD21B4533F002CE263 /* Activity.storyboard */; };
 		84CF4CC021B45352002CE263 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CF4CBF21B45352002CE263 /* Profile.storyboard */; };
 		84CF4CC421B45DD7002CE263 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84CF4CC321B45DD7002CE263 /* GoogleService-Info.plist */; };
+		84D8964021B7130D0023C666 /* MyPostsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8963F21B7130D0023C666 /* MyPostsAPI.swift */; };
+		84D8964221B717C40023C666 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8964121B717C40023C666 /* PhotoCollectionViewCell.swift */; };
+		84D8964421B7EB770023C666 /* HelperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8964321B7EB770023C666 /* HelperService.swift */; };
+		84D8964621B800090023C666 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8964521B800090023C666 /* PeopleViewController.swift */; };
+		84D8964821B800420023C666 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8964721B800420023C666 /* PeopleTableViewCell.swift */; };
+		84D8964C21B805540023C666 /* FollowAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8964B21B805540023C666 /* FollowAPI.swift */; };
 		A53659E0742A9724B8F85FBE /* Pods_Travelers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BDF3BACE5D78F4DF0BA0700 /* Pods_Travelers.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +60,12 @@
 		84B0C7FC21B585D3003F29B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84B0C7FE21B599F5003F29B9 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		84B0C80021B59A25003F29B9 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		84BE159621B69B7900307CF6 /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPI.swift; sourceTree = "<group>"; };
+		84BE159821B69D0100307CF6 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		84BE159B21B69E5A00307CF6 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		84BE159D21B69EDA00307CF6 /* CommentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAPI.swift; sourceTree = "<group>"; };
+		84BE159F21B6A17700307CF6 /* Post_CommentAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post_CommentAPI.swift; sourceTree = "<group>"; };
+		84BE15A121B6BDD500307CF6 /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		84C08BA321B537320019A1E2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		84C08BA521B5409F0019A1E2 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		84C08BA721B542A20019A1E2 /* Travelers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Travelers-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -74,6 +92,12 @@
 		84CF4CBD21B4533F002CE263 /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		84CF4CBF21B45352002CE263 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		84CF4CC321B45DD7002CE263 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84D8963F21B7130D0023C666 /* MyPostsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsAPI.swift; sourceTree = "<group>"; };
+		84D8964121B717C40023C666 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		84D8964321B7EB770023C666 /* HelperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperService.swift; sourceTree = "<group>"; };
+		84D8964521B800090023C666 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		84D8964721B800420023C666 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		84D8964B21B805540023C666 /* FollowAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +136,25 @@
 			children = (
 				84B0C7FA21B57707003F29B9 /* HomeTableViewCell.swift */,
 				84B0C7FE21B599F5003F29B9 /* CommentTableViewCell.swift */,
+				84BE15A121B6BDD500307CF6 /* HeaderProfileCollectionReusableView.swift */,
+				84D8964121B717C40023C666 /* PhotoCollectionViewCell.swift */,
+				84D8964721B800420023C666 /* PeopleTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		84BE159A21B69D0800307CF6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				84BE159621B69B7900307CF6 /* PostAPI.swift */,
+				84BE159821B69D0100307CF6 /* UserAPI.swift */,
+				84BE159D21B69EDA00307CF6 /* CommentAPI.swift */,
+				84BE159F21B6A17700307CF6 /* Post_CommentAPI.swift */,
+				84BE159B21B69E5A00307CF6 /* API.swift */,
+				84D8963F21B7130D0023C666 /* MyPostsAPI.swift */,
+				84D8964B21B805540023C666 /* FollowAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		84CF4C8721B43A78002CE263 = {
@@ -140,10 +181,12 @@
 				84CF4C9321B43A78002CE263 /* AppDelegate.swift */,
 				84C08BA321B537320019A1E2 /* AuthService.swift */,
 				84C08BA521B5409F0019A1E2 /* Config.swift */,
+				84D8964321B7EB770023C666 /* HelperService.swift */,
+				84BE159A21B69D0800307CF6 /* API */,
 				84B0C7F921B576E0003F29B9 /* Views */,
 				84B0C7F621B56029003F29B9 /* Model */,
-				84CF4CC121B45BDA002CE263 /* Storyboards */,
 				84CF4CC221B45BFC002CE263 /* ViewControllers */,
+				84CF4CC121B45BDA002CE263 /* Storyboards */,
 				84CF4C9A21B43A7A002CE263 /* Assets.xcassets */,
 				84CF4C9C21B43A7A002CE263 /* LaunchScreen.storyboard */,
 				84CF4CC321B45DD7002CE263 /* GoogleService-Info.plist */,
@@ -176,11 +219,12 @@
 				84CF4CA721B43C84002CE263 /* SignInViewController.swift */,
 				84CF4CA921B43F42002CE263 /* SignUpViewController.swift */,
 				84CF4CAB21B44D40002CE263 /* HomeViewController.swift */,
+				84B0C80021B59A25003F29B9 /* CommentViewController.swift */,
 				84CF4CAF21B44D7E002CE263 /* CameraViewController.swift */,
 				84CF4CAD21B44D6B002CE263 /* DiscoverViewController.swift */,
 				84CF4CB121B44D89002CE263 /* ActivityViewController.swift */,
 				84CF4CB321B44D93002CE263 /* ProfileViewController.swift */,
-				84B0C80021B59A25003F29B9 /* CommentViewController.swift */,
+				84D8964521B800090023C666 /* PeopleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -322,20 +366,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BE15A221B6BDD500307CF6 /* HeaderProfileCollectionReusableView.swift in Sources */,
 				84CF4CAA21B43F42002CE263 /* SignUpViewController.swift in Sources */,
 				84CF4CA821B43C84002CE263 /* SignInViewController.swift in Sources */,
+				84BE159721B69B7900307CF6 /* PostAPI.swift in Sources */,
+				84BE159921B69D0100307CF6 /* UserAPI.swift in Sources */,
 				84B0C7FB21B57707003F29B9 /* HomeTableViewCell.swift in Sources */,
+				84D8964221B717C40023C666 /* PhotoCollectionViewCell.swift in Sources */,
 				84CF4C9421B43A78002CE263 /* AppDelegate.swift in Sources */,
+				84D8964C21B805540023C666 /* FollowAPI.swift in Sources */,
 				84B0C7F821B56038003F29B9 /* Post.swift in Sources */,
 				849D939E21B5A8E500770A0D /* Comment.swift in Sources */,
+				84BE15A021B6A17700307CF6 /* Post_CommentAPI.swift in Sources */,
 				84C08BA421B537320019A1E2 /* AuthService.swift in Sources */,
 				84B0C7FD21B585D3003F29B9 /* User.swift in Sources */,
 				84B0C7FF21B599F5003F29B9 /* CommentTableViewCell.swift in Sources */,
+				84BE159E21B69EDA00307CF6 /* CommentAPI.swift in Sources */,
 				84B0C80121B59A25003F29B9 /* CommentViewController.swift in Sources */,
 				84CF4CAC21B44D40002CE263 /* HomeViewController.swift in Sources */,
 				84CF4CB221B44D89002CE263 /* ActivityViewController.swift in Sources */,
+				84BE159C21B69E5A00307CF6 /* API.swift in Sources */,
+				84D8964421B7EB770023C666 /* HelperService.swift in Sources */,
+				84D8964821B800420023C666 /* PeopleTableViewCell.swift in Sources */,
 				84C08BAC21B542A40019A1E2 /* ProgressHUD.m in Sources */,
 				84CF4CAE21B44D6B002CE263 /* DiscoverViewController.swift in Sources */,
+				84D8964021B7130D0023C666 /* MyPostsAPI.swift in Sources */,
+				84D8964621B800090023C666 /* PeopleViewController.swift in Sources */,
 				84C08BA621B5409F0019A1E2 /* Config.swift in Sources */,
 				84CF4CB421B44D93002CE263 /* ProfileViewController.swift in Sources */,
 				84CF4CB021B44D7E002CE263 /* CameraViewController.swift in Sources */,

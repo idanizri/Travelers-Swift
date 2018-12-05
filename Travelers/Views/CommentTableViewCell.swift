@@ -51,6 +51,7 @@ class CommentTableViewCell: UITableViewCell {
         profileImage.image = UIImage(named: "placeholderImg")
     }
     
+    //when we scroll fast the comment we want to place a placeholder initially before changing the data
     override func prepareForReuse() {
         profileImage.image = UIImage(named: "placeholderImg")
     }

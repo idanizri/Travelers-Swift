@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseAuth
 class CommentViewController: UIViewController {
     
     
@@ -20,10 +18,11 @@ class CommentViewController: UIViewController {
     @IBOutlet weak var constraintToButtom: NSLayoutConstraint!
     
     
-    let postId = "-LSotBJnS0emFkIERVjl"
+    var postId: String!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Comment"
+        
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         
@@ -73,32 +72,25 @@ class CommentViewController: UIViewController {
     
     //load all the comments to the corresponding user
     func loadComments(){
-        let postCommentRef = Database.database().reference().child("post-comments").child(self.postId)
-        postCommentRef.observe(.childAdded, with: {
+
+        API.Post_Comment.REF_POSTS_COMMENTS.child(self.postId).observe(.childAdded, with: {
             snapshot in
-            Database.database().reference().child("comments").child(snapshot.key).observeSingleEvent(of: .value, with: {
-                snapshotComment in
-                if let dict = snapshotComment.value as?[String: Any]{
-                    let newComment = Comment.transformComment(dict: dict)
-                    self.fetchUser(uid: newComment.uid!,completed: {
-                        self.comments.append(newComment)
-                        self.tableView.reloadData()
-                    })
-                }
+            
+            API.Comment.observeComments(withPostId: snapshot.key, completion: { (comment) in
+                self.fetchUser(uid: comment.uid!,completed: {
+                    self.comments.append(comment)
+                    self.tableView.reloadData()
+                })
             })
         })
     }
     
     //fetching the user from the database so we can couple the comment to the user
     func fetchUser(uid: String,completed: @escaping () -> Void){
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: {
-            snapshot in
-            if let dict = snapshot.value as? [String: Any]{
-                let user = User.transformUser(dict: dict)
-                self.users.append(user)
-                completed()
-            }
-        })
+        API.User.observeUser(withId: uid) { (user) in
+            self.users.append(user)
+            completed()
+        }
     }
     
     //disable showing the tabbar when we move to the comments view
@@ -107,19 +99,19 @@ class CommentViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        self.tabBarController?.tabBar.isHidden = false
-//    }
+    //show the tabbar when we go out from the comment view
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     //sharing a comment to the post
     @IBAction func sendButton_TouchUpInside(_ sender: Any) {
         //put user at the database
-        let ref = Database.database().reference()
-        let commentsRefrence = ref.child("comments")
+        let commentsRefrence = API.Comment.REF_COMMENTS
         let newCommentId = commentsRefrence.childByAutoId().key
         let newCommentRefrence = commentsRefrence.child(newCommentId!)
-        guard let currentUser = Auth.auth().currentUser else {
+        guard let currentUser = API.User.CURRENT_USER else {
             return
         }
         let currentUserId = currentUser.uid
@@ -128,8 +120,7 @@ class CommentViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
-            let postCommentRef = Database.database().reference().child("post-comments").child(self.postId).child(newCommentId!)
-            print(postCommentRef)
+            let postCommentRef = API.Post_Comment.REF_POSTS_COMMENTS.child(self.postId).child(newCommentId!)
             postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil{
                     ProgressHUD.showError(error!.localizedDescription)

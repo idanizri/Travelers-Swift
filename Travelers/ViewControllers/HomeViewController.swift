@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 import SDWebImage
 class HomeViewController: UIViewController {
     
@@ -29,55 +27,46 @@ class HomeViewController: UIViewController {
         loadPosts()
     }
     
-    //showing the tabbar when we arive to the home view
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     //loading all the posts from the database
     func loadPosts(){
         activityIndicatorView.startAnimating()
-        Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
-            if let dict = snapshot.value as?[String: Any]{
-                let newPost = Post.transformPost(dict: dict)
-                self.fetchUser(uid: newPost.uid!,completed: {
-                    self.posts.append(newPost)
-                    self.activityIndicatorView.stopAnimating()
-                    self.tableView.reloadData()
-                })
-            }
+        API.Post.observePosts { (post) in
+            self.fetchUser(uid: post.uid!,completed: {
+                self.posts.append(post)
+                self.activityIndicatorView.stopAnimating()
+                self.tableView.reloadData()
+            })
         }
     }
     
     //fetching the user from the database so we can couple the post photo to the user
     func fetchUser(uid: String,completed: @escaping () -> Void){
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: {
-            snapshot in
-            if let dict = snapshot.value as? [String: Any]{
-                let user = User.transformUser(dict: dict)
-                self.users.append(user)
-                completed()
-            }
-        })
+        API.User.observeUser(withId: uid) { (user) in
+            self.users.append(user)
+            completed()
+        }
     }
     
     //touching the logout button
     @IBAction func logout_TouchUpInside(_ sender: Any) {
-        do{
-            try Auth.auth().signOut()
-        }catch let logoutError{
-            print(logoutError)
+        AuthService.logout(onSuccess: {
+            let storyboard = UIStoryboard(name: "Start", bundle: nil)
+            let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+            self.present(signInVC, animated: true, completion: nil)
+        }) { (errorMessage) in
+            ProgressHUD.showError(errorMessage)
         }
-        
-        let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        self.present(signInVC, animated: true, completion: nil)
     }
     
-    @IBAction func button_TouchUpInside(_ sender: Any) {
-        self.performSegue(withIdentifier: "CommentSegue", sender: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CommentSegue"{
+            let commentVC = segue.destination as! CommentViewController
+            let postId = sender as! String
+            commentVC.postId = postId
+        }
     }
+    
+    
 }
 extension HomeViewController: UITableViewDataSource {
     //seting the amount of cells we want to show
@@ -90,6 +79,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! HomeTableViewCell
         cell.user = users[indexPath.row]
         cell.post = posts[indexPath.row]
+        cell.homeVC = self
         return cell
     }
     

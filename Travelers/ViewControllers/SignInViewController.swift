@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 class SignInViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -48,7 +47,7 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         //if the user is already signed in go to the home view
         super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil{
+        if API.User.CURRENT_USER != nil{
             self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
         }
     }
