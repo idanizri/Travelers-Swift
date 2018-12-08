@@ -7,13 +7,17 @@
 //
 
 import UIKit
-
+protocol PeopleTableViewCellDelegate {
+    func goToProfileUserVC(userId: String)
+}
 class PeopleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
     
+    var delegate: PeopleTableViewCellDelegate?
+    var peopleVC:PeopleViewController?
     //when a new user is set for a cell it will automaticlly update the cell view
     var user: User?{
         didSet{
@@ -23,6 +27,17 @@ class PeopleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //make the namelabel touchable
+        let nameLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.nameLabel_TouchUpInside))
+        nameLabel.addGestureRecognizer(nameLabelTapGesture)
+        nameLabel.isUserInteractionEnabled = true
+    }
+    
+    //touching the namelabel in the people cell
+    @objc func nameLabel_TouchUpInside(){
+        if let id = user?.id{
+            delegate?.goToProfileUserVC(userId: id)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

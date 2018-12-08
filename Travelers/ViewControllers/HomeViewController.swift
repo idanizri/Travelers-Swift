@@ -29,13 +29,23 @@ class HomeViewController: UIViewController {
     
     //loading all the posts from the database
     func loadPosts(){
-        activityIndicatorView.startAnimating()
-        API.Post.observePosts { (post) in
-            self.fetchUser(uid: post.uid!,completed: {
+        
+        API.Feed.observeFeed(withId: API.User.CURRENT_USER!.uid) { (post) in
+            guard let postUid = post.uid else{
+                return
+            }
+            self.fetchUser(uid: postUid, completed: {
                 self.posts.append(post)
                 self.activityIndicatorView.stopAnimating()
                 self.tableView.reloadData()
             })
+        }
+        
+        //filter unfollowed posts from users
+        API.Feed.observeFeedRemoved(withId: API.User.CURRENT_USER!.uid) { (post) in
+            self.posts = self.posts.filter { $0.id != post.id}
+            self.users = self.users.filter {$0.id != post.uid}
+            self.tableView.reloadData()
         }
     }
     
@@ -47,22 +57,18 @@ class HomeViewController: UIViewController {
         }
     }
     
-    //touching the logout button
-    @IBAction func logout_TouchUpInside(_ sender: Any) {
-        AuthService.logout(onSuccess: {
-            let storyboard = UIStoryboard(name: "Start", bundle: nil)
-            let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-            self.present(signInVC, animated: true, completion: nil)
-        }) { (errorMessage) in
-            ProgressHUD.showError(errorMessage)
-        }
-    }
-    
+    //getting the sender that sent before the segue has began
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CommentSegue"{
             let commentVC = segue.destination as! CommentViewController
             let postId = sender as! String
             commentVC.postId = postId
+        }
+        
+        if segue.identifier == "Home_ProfileSegue"{
+            let profileVC = segue.destination as! ProfileUserViewController
+            let userId = sender as! String
+            profileVC.userId = userId
         }
     }
     
@@ -79,8 +85,19 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! HomeTableViewCell
         cell.user = users[indexPath.row]
         cell.post = posts[indexPath.row]
-        cell.homeVC = self
+        cell.delegate = self
         return cell
+    }
+    
+    
+}
+extension HomeViewController: HomeTableViewCellDelegate{
+    func goToProfileUserVC(userId: String) {
+        performSegue(withIdentifier: "Home_ProfileSegue", sender: userId)
+    }
+    
+    func goToCommentVC(postId: String) {
+        performSegue(withIdentifier: "CommentSegue", sender: postId)
     }
     
     

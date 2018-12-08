@@ -7,6 +7,10 @@
 //
 
 import UIKit
+protocol HomeTableViewCellDelegate {
+    func goToCommentVC(postId: String)
+    func goToProfileUserVC(userId: String)
+}
 class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -17,6 +21,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
+    
+    var delegate: HomeTableViewCellDelegate?
     
     var homeVC: HomeViewController?
     var post: Post?{
@@ -44,12 +50,24 @@ class HomeTableViewCell: UITableViewCell {
         let likeTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.likeImageView_TouchUpInside))
         likeImageView.addGestureRecognizer(likeTapGesture)
         likeImageView.isUserInteractionEnabled = true
+        
+        let nameLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.nameLabel_TouchUpInside))
+        nameLabel.addGestureRecognizer(nameLabelTapGesture)
+        nameLabel.isUserInteractionEnabled = true
+    }
+    
+    
+    //touching the namelabel in the people cell
+    @objc func nameLabel_TouchUpInside(){
+        if let id = user?.id{
+            delegate?.goToProfileUserVC(userId: id)
+        }
     }
     
     //perform the segue from the home view to the comments of that post
     @objc func commentImageView_TouchUpInside(){
         if let id = post?.id{
-            homeVC?.performSegue(withIdentifier: "CommentSegue", sender: id)
+            delegate?.goToCommentVC(postId: id)
         }
     }
     //perform a like or unlike

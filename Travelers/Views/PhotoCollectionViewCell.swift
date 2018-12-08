@@ -7,11 +7,14 @@
 //
 
 import UIKit
+protocol PhotoCollectionViewCellDelegate {
+    func goToDetailVC(postId: String)
 
+}
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var photo: UIImageView!
-    
+    var delegate: PhotoCollectionViewCellDelegate?
     var post: Post?{
         didSet{
             updateView()
@@ -27,6 +30,16 @@ class PhotoCollectionViewCell: UICollectionViewCell {
                     print(error?.localizedDescription)
                 }
             }
+        }
+        
+        let photoTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.photo_TouchUpInside))
+        photo.addGestureRecognizer(photoTapGesture)
+        photo.isUserInteractionEnabled = true
+    }
+    
+    @objc func photo_TouchUpInside(){
+        if let id = post?.id{
+            delegate?.goToDetailVC(postId: id)
         }
     }
 }

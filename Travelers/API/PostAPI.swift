@@ -44,6 +44,20 @@ class PostAPI{
         })
     }
     
+    //get the posts ordered by like count
+    func observeTopPosts(completion: @escaping (Post) -> Void){
+        REF_POSTS.queryOrdered(byChild: "likeCount").observeSingleEvent(of: .value, with: {
+            snapshot in
+            let arraySnapshot = (snapshot.children.allObjects as! [DataSnapshot]).reversed()
+            arraySnapshot.forEach({ (child) in
+                if let dict = child.value as? [String: Any]{
+                    let post = Post.transformPost(dict: dict, key: child.key)
+                    completion(post)
+                }
+            })
+        })
+    }
+    
     //increase the amount of like by 1 decrease by 1 using the firebase transaction tool
     func incrementLikes(postId: String, onSuccess: @escaping (Post) -> Void, onError: @escaping (_ errorMessage: String?) -> Void){
         let postRef = API.Post.REF_POSTS.child(postId)

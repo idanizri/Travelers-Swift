@@ -7,12 +7,16 @@
 //
 
 import UIKit
+protocol CommentTableViewCellDelegate {
+    func goToProfileUserVC(userId: String)
+}
 
 class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     
+    var delegate: CommentTableViewCellDelegate?
     var comment: Comment?{
         didSet{
             updateView()
@@ -49,6 +53,17 @@ class CommentTableViewCell: UITableViewCell {
         commentLabel.text = ""
         nameLabel.text = ""
         profileImage.image = UIImage(named: "placeholderImg")
+        
+        let nameLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.nameLabel_TouchUpInside))
+        nameLabel.addGestureRecognizer(nameLabelTapGesture)
+        nameLabel.isUserInteractionEnabled = true
+    }
+    
+    //touching the namelabel in the people cell
+    @objc func nameLabel_TouchUpInside(){
+        if let id = user?.id{
+            delegate?.goToProfileUserVC(userId: id)
+        }
     }
     
     //when we scroll fast the comment we want to place a placeholder initially before changing the data

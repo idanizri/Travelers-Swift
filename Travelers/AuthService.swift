@@ -61,10 +61,50 @@ class AuthService {
         let ref = Database.database().reference()
         let usersRefrence = ref.child("users")
         let newUserRefrence = usersRefrence.child(uid)
-        newUserRefrence.setValue(["username": username, "email": email, "profileImageURL": profileImageURL])
+        newUserRefrence.setValue(["username": username, "username_lowercase": username.lowercased(), "email": email, "profileImageURL": profileImageURL])
         onSuccess()
     }
     
+    //change the user information like the profile image the username and the email that is givven to us from the edit profile view
+    static func updateUserInfo(email: String, username: String,imageData: Data, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void){
+        
+        API.User.CURRENT_USER?.updateEmail(to: email, completion: { (error) in
+            if error != nil{
+               onError(error?.localizedDescription)
+            }else{
+                let uid = API.User.CURRENT_USER?.uid
+                //put the profile photo in the storage
+                let storageRef = Storage.storage().reference(forURL: Config.STORAGE_ROOT_REF).child("profile_Image").child(uid!)
+                storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+                    if error != nil{
+                        onError(error?.localizedDescription)
+                        return
+                    }
+                    storageRef.downloadURL { (url, error) in
+                        guard let profileImageURL = url?.absoluteString else {
+                            // Uh-oh, an error occurred!
+                            return
+                        }
+                        self.updateDatabase(profileImageURL: profileImageURL, username: username, email: email, onSuccess: onSuccess, onError: onError)
+                        self.setUserInformation(profileImageURL: profileImageURL, username: username, email: email, uid: uid!, onSuccess: onSuccess)
+                    }
+                })
+            }
+        })
+    }
+    
+    //modify the data that is in the database
+    static func updateDatabase(profileImageURL: String, username: String, email: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void){
+        let dict = ["username": username, "username_lowercase": username.lowercased(), "email": email, "profileImageURL": profileImageURL]
+        API.User.REF_CURRENT_USER?.updateChildValues(dict, withCompletionBlock: { (error, ref) in
+            if error != nil{
+                onError(error?.localizedDescription)
+            }
+            onSuccess()
+        })
+    }
+    
+    //sign out the user credetials from the database
     static func logout(onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void){
         do{
         try Auth.auth().signOut()

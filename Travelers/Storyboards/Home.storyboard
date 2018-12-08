@@ -144,32 +144,30 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3ha-Q5-5rP"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="lWc-hI-ucD">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="1vd-iD-Wvt">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="btd-w1-wAx">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="LogOut"/>
-                                <connections>
-                                    <action selector="logout_TouchUpInside:" destination="hc6-TN-BJB" eventType="touchUpInside" id="ybY-l8-yPZ"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Home" id="lWc-hI-ucD"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="TYV-Al-n9R" id="6td-Ex-aeg"/>
                         <outlet property="tableView" destination="sxv-RA-Mrz" id="MDB-Kp-zXl"/>
                         <segue destination="3dU-XD-7oj" kind="show" identifier="CommentSegue" id="SbA-AY-5pn"/>
+                        <segue destination="g70-sg-RDV" kind="show" identifier="Home_ProfileSegue" id="bHV-pm-Qip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fm-GW-Qya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1172" y="312.59370314842579"/>
         </scene>
+        <!--ProfileUserViewController-->
+        <scene sceneID="zcg-6b-4U7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="ProfileUserViewController" id="g70-sg-RDV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tYg-Ke-6zX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-368" y="-141"/>
+        </scene>
         <!--Comment View Controller-->
         <scene sceneID="t8A-R2-paC">
             <objects>
-                <viewController id="3dU-XD-7oj" customClass="CommentViewController" customModule="Travelers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommentViewController" id="3dU-XD-7oj" customClass="CommentViewController" customModule="Travelers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ldy-9X-VZx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,11 +289,12 @@
                         <outlet property="constraintToButtom" destination="6SI-Sl-Kuf" id="cqH-AX-pjS"/>
                         <outlet property="sendButton" destination="7LB-ga-4mb" id="PN0-Mp-Gex"/>
                         <outlet property="tableView" destination="xse-kx-Aqs" id="nFc-5b-Jog"/>
+                        <segue destination="g70-sg-RDV" kind="show" identifier="Comment_ProfileSegue" id="7Db-uW-N75"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpJ-80-x5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-364" y="309.89505247376314"/>
+            <point key="canvasLocation" x="-367" y="313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zSi-d4-OHn">
@@ -327,4 +326,7 @@
         <image name="placeholderImg" width="225" height="225"/>
         <image name="share" width="37" height="41"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Db-uW-N75"/>
+    </inferredMetricsTieBreakers>
 </document>

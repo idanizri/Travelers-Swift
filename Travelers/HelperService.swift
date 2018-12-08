@@ -39,11 +39,14 @@ class HelperService  {
             return
         }
         let currentUserId = currentUser.uid
-        newPostRefrence.setValue(["uid": currentUserId, "photoURL": photoURL, "caption": caption]) { (error, ref) in
+        newPostRefrence.setValue(["uid": currentUserId, "photoURL": photoURL, "caption": caption, "likeCount": 0]) { (error, ref) in
             if error != nil{
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
+            
+            API.Feed.REF_FEED.child((API.User.CURRENT_USER?.uid)!).child(newPostId!).setValue(true)
+            
             let myPostRef = API.My_Posts.REF_MY_POSTS.child(currentUserId).child(newPostId!)
             myPostRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil{

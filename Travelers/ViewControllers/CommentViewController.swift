@@ -155,6 +155,17 @@ class CommentViewController: UIViewController {
         sendButton.setTitleColor(UIColor.lightGray, for: UIControl.State.normal)
         sendButton.isEnabled = false
     }
+    
+    //getting the sender that sent before the segue has began
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "Comment_ProfileSegue"{
+            let profileVC = segue.destination as! ProfileUserViewController
+            let userId = sender as! String
+            profileVC.userId = userId
+        }
+    }
+
 }
 extension CommentViewController: UITableViewDataSource {
     //seting the amount of cells we want to show
@@ -167,8 +178,15 @@ extension CommentViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
         cell.user = users[indexPath.row]
         cell.comment = comments[indexPath.row]
+        cell.delegate = self
         return cell
+    }
+}
+extension CommentViewController: CommentTableViewCellDelegate{
+    func goToProfileUserVC(userId: String) {
+        performSegue(withIdentifier: "Comment_ProfileSegue", sender: userId)
     }
     
     
 }
+

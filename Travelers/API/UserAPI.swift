@@ -53,13 +53,29 @@ class UserAPI{
         })
     }
     
+    //observe all users
     func observeUsers(completion: @escaping (User) -> Void){
         REF_USERS.observe(.childAdded, with: {
             snapshot in
             if let dict = snapshot.value as? [String: Any]{
                 let user = User.transformUser(dict: dict, key: snapshot.key)
-                completion(user)
+                if user.id != API.User.CURRENT_USER?.uid{
+                    completion(user)
+                }
             }
+        })
+    }
+    //query users from database
+    func queryUser(withText text: String, completion: @escaping (User) -> Void){
+        REF_USERS.queryOrdered(byChild: "username_lowercase").queryStarting(atValue: text).queryEnding(atValue: text+"\u{f8ff}").queryLimited(toLast: 10).observeSingleEvent(of: .value, with: {
+            snapshot in
+            snapshot.children.forEach({ (s) in
+                let child = s as! DataSnapshot
+                if let dict = child.value as? [String: Any]{
+                    let user = User.transformUser(dict: dict, key: child.key)
+                    completion(user)
+                }
+            })
         })
     }
 }
