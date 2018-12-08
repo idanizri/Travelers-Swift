@@ -85,7 +85,7 @@
         <!--Detail View Controller-->
         <scene sceneID="1S4-9K-Zbu">
             <objects>
-                <viewController id="Y6r-99-Jof" customClass="DetailViewController" customModule="Travelers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="Y6r-99-Jof" customClass="DetailViewController" customModule="Travelers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wKn-Bl-y5l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

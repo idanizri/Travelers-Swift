@@ -9,6 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--DetailViewController-->
+        <scene sceneID="2ze-g0-jUy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Discover" referencedIdentifier="DetailViewController" id="f9K-PP-fIT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G9t-QE-qBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3111" y="743"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="GqQ-bU-5nK">
             <objects>
@@ -202,6 +210,7 @@
                     <connections>
                         <outlet property="collectionView" destination="UpG-Yr-8xm" id="dez-sw-Z9R"/>
                         <segue destination="jzR-VB-5hq" kind="show" identifier="Profile_SettingSegue" id="uYi-yt-kG0"/>
+                        <segue destination="f9K-PP-fIT" kind="show" identifier="Profile_DetailSegue" id="TTK-4W-wPz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ev7-kT-6Bw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -502,6 +511,7 @@
                     <connections>
                         <outlet property="collectionView" destination="tJd-Qd-TAt" id="D4p-wV-LZu"/>
                         <segue destination="jzR-VB-5hq" kind="show" identifier="ProfileUser_SettingSegue" id="WXg-5m-TDU"/>
+                        <segue destination="f9K-PP-fIT" kind="show" identifier="ProfileUser_DetailSegue" id="CRZ-zH-PKs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbU-i4-u9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -696,5 +706,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WXg-5m-TDU"/>
+        <segue reference="CRZ-zH-PKs"/>
     </inferredMetricsTieBreakers>
 </document>

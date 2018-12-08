@@ -21,6 +21,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var heightConstraintPhoto: NSLayoutConstraint!
     
     var delegate: HomeTableViewCellDelegate?
     
@@ -92,6 +93,9 @@ class HomeTableViewCell: UITableViewCell {
     func updateView(){
         captionLabel.text = post!.caption
         if let photoURLString = post!.photoURL{
+            if let ratio = post?.ratio{
+                heightConstraintPhoto.constant = UIScreen.main.bounds.width / ratio
+            }
             let photoURL = URL(string: photoURLString)
             postImageView?.sd_setImage(with: photoURL) { (image, error, cache, url) in
                 if (error != nil){

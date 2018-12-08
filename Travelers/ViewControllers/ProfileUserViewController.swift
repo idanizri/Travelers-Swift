@@ -50,6 +50,15 @@ class ProfileUserViewController: UIViewController {
         }
     }
     
+    //getting the sender that sent before the segue has began
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ProfileUser_DetailSegue"{
+            let detailVC = segue.destination as! DetailViewController
+            let postId = sender as! String
+            detailVC.postId = postId
+        }
+    }
+    
     //check if a user is following or not
     func isFollowing(userId: String, completed: @escaping (Bool) -> Void){
         API.Follow.isFollowing(userId: userId, completed: completed)
@@ -66,6 +75,7 @@ extension ProfileUserViewController: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         let post = posts[indexPath.row]
         cell.post = post
+        cell.delegate = self
         return cell
     }
     //set the data of the user to the collection view in the profile
@@ -103,4 +113,8 @@ extension ProfileUserViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
-
+extension ProfileUserViewController: PhotoCollectionViewCellDelegate{
+    func goToDetailVC(postId: String) {
+        performSegue(withIdentifier: "ProfileUser_DetailSegue", sender: postId)
+    }
+}

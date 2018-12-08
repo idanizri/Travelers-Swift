@@ -119,6 +119,7 @@
                                         <connections>
                                             <outlet property="captionLabel" destination="JqD-2W-55u" id="kSe-Yx-y6N"/>
                                             <outlet property="commentImageView" destination="7SD-pb-g2l" id="Cwt-ep-W1k"/>
+                                            <outlet property="heightConstraintPhoto" destination="pe1-gl-Ind" id="0ga-9x-Mlm"/>
                                             <outlet property="likeCountButton" destination="SQJ-lB-v2S" id="ndb-Bq-UqD"/>
                                             <outlet property="likeImageView" destination="WM7-0s-ehA" id="nlh-11-GEk"/>
                                             <outlet property="nameLabel" destination="G9C-6K-Mus" id="qOA-MB-5eF"/>
@@ -327,6 +328,6 @@
         <image name="share" width="37" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Db-uW-N75"/>
+        <segue reference="bHV-pm-Qip"/>
     </inferredMetricsTieBreakers>
 </document>

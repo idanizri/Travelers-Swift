@@ -17,6 +17,7 @@ class Post{
     var likeCount: Int?
     var likes: Dictionary<String, Any>?
     var isLiked: Bool?
+    var ratio: CGFloat?
 }
 extension Post{
     //transform data that we got from database to a class post
@@ -28,6 +29,7 @@ extension Post{
         post.uid = dict["uid"] as? String
         post.likeCount = dict["likeCount"] as? Int
         post.likes = dict ["likes"] as? Dictionary<String, Any>
+        post.ratio = dict["ratio"] as? CGFloat
         //checks if the current user is in the array of likes for a specific post
         if let currentUserId = Auth.auth().currentUser?.uid{
             if post.likes != nil{

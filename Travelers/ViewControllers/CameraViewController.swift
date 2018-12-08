@@ -63,7 +63,8 @@ class CameraViewController: UIViewController {
         
         //push the photo to the storage unit
         if let profileImag = self.selectedImage, let imageData = profileImag.jpegData(compressionQuality: 0.1) {
-            HelperService.uploadDataToServer(data: imageData, caption: captionTextView.text!) {
+            let ratio = profileImag.size.width / profileImag.size.height
+            HelperService.uploadDataToServer(data: imageData,ratio: ratio,caption: captionTextView.text!) {
                 self.clean()
                 self.tabBarController?.selectedIndex = 0
             }
