@@ -27,7 +27,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             let photoURL = URL(string: photoURLString)
             photo?.sd_setImage(with: photoURL) { (image, error, cache, url) in
                 if (error != nil){
-                    print(error?.localizedDescription)
+                    print(error?.localizedDescription as Any)
                 }
             }
         }

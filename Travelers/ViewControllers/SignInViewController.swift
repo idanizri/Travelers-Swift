@@ -47,6 +47,16 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         //if the user is already signed in go to the home view
         super.viewDidAppear(animated)
+        
+        let defaults = UserDefaults.standard
+        let hasViewedWalkThrough = defaults.bool(forKey: "hasViewedWalkThrough")
+        if hasViewedWalkThrough != true{
+            if let pageVC = storyboard?.instantiateViewController(withIdentifier: "WalkThroughViewController") as? WalkThroughViewController{
+                present(pageVC, animated: true, completion: nil)
+            }
+        }
+
+        
         if API.User.CURRENT_USER != nil{
             self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
         }

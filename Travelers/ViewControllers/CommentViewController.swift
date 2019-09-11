@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class CommentViewController: UIViewController {
+class CommentViewController: UIViewController, UITextFieldDelegate {
     
     
     var comments = [Comment]()
@@ -34,15 +34,21 @@ class CommentViewController: UIViewController {
         empty()
         loadComments()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
-        tableView.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+//        tableView.addGestureRecognizer(tapGesture)
         
+        self.commentTextField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_ :)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @objc func handleTap(){
@@ -120,6 +126,17 @@ class CommentViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
+            
+            let words = self.commentTextField.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+            
+            for var word in words {
+                if word.hasPrefix("#"){
+                    word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+                    let newHashtagRef = API.HashTag.REF_HASHTAG.child(word.lowercased())
+                    newHashtagRef.child(self.postId!).setValue(true)
+                }
+            }
+            
             let postCommentRef = API.Post_Comment.REF_POSTS_COMMENTS.child(self.postId).child(newCommentId!)
             postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil{
@@ -164,6 +181,12 @@ class CommentViewController: UIViewController {
             let userId = sender as! String
             profileVC.userId = userId
         }
+        
+        if segue.identifier == "Comment_HashTagSegue"{
+            let hashTagVC = segue.destination as! HashTagViewController
+            let tag = sender as! String
+            hashTagVC.tag = tag
+        }
     }
 
 }
@@ -183,6 +206,10 @@ extension CommentViewController: UITableViewDataSource {
     }
 }
 extension CommentViewController: CommentTableViewCellDelegate{
+    func goToHashTag(tag: String) {
+        performSegue(withIdentifier: "Comment_HashTagSegue", sender: tag)
+    }
+    
     func goToProfileUserVC(userId: String) {
         performSegue(withIdentifier: "Comment_ProfileSegue", sender: userId)
     }

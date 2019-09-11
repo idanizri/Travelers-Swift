@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
                 return
             }
             self.fetchUser(uid: postUid, completed: {
-                self.posts.append(post)
+                self.posts.insert(post, at: 0)
                 self.activityIndicatorView.stopAnimating()
                 self.tableView.reloadData()
             })
@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
     //fetching the user from the database so we can couple the post photo to the user
     func fetchUser(uid: String,completed: @escaping () -> Void){
         API.User.observeUser(withId: uid) { (user) in
-            self.users.append(user)
+            self.users.insert(user, at: 0)
             completed()
         }
     }
@@ -63,6 +63,12 @@ class HomeViewController: UIViewController {
             let commentVC = segue.destination as! CommentViewController
             let postId = sender as! String
             commentVC.postId = postId
+        }
+        
+        if segue.identifier == "Home_HashTagSegue"{
+            let hashTagVC = segue.destination as! HashTagViewController
+            let tag = sender as! String
+            hashTagVC.tag = tag
         }
         
         if segue.identifier == "Home_ProfileSegue"{
@@ -92,6 +98,10 @@ extension HomeViewController: UITableViewDataSource {
     
 }
 extension HomeViewController: HomeTableViewCellDelegate{
+    func goToHashTag(tag: String) {
+        performSegue(withIdentifier: "Home_HashTagSegue", sender: tag)
+    }
+    
     func goToProfileUserVC(userId: String) {
         performSegue(withIdentifier: "Home_ProfileSegue", sender: userId)
     }

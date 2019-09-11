@@ -14,8 +14,8 @@ class FeedAPI{
     //get new posts by followed user
     func observeFeed(withId id:String,completion: @escaping (Post) -> Void){
         REF_FEED.child(id).observe(.childAdded, with: {
-            snapsohot in
-            let key = snapsohot.key
+            snapshot in
+            let key = snapshot.key
             API.Post.observePost(withId: key, completion: { (post) in
                 completion(post)
             })

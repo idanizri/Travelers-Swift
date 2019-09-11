@@ -22,7 +22,7 @@ class PostAPI{
         }
     }
     
-    //getting a user with a specific id
+    //getting a post with a specific id
     func observePost(withId id: String, completion: @escaping (Post) -> Void){
         REF_POSTS.child(id).observeSingleEvent(of: DataEventType.value
             , with: {

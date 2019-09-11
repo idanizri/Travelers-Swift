@@ -17,6 +17,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        tableView.estimatedRowHeight = 521
+        tableView.rowHeight = UITableView.automaticDimension
         loadPost()
     }
     func loadPost(){
@@ -52,6 +55,12 @@ class DetailViewController: UIViewController {
             let userId = sender as! String
             profileVC.userId = userId
         }
+        
+        if segue.identifier == "Detail_HashTagSegue"{
+            let hashtagVC = segue.destination as! HashTagViewController
+            let tag = sender as! String
+            hashtagVC.tag = tag
+        }
     }
 
 }
@@ -69,6 +78,10 @@ extension DetailViewController: UITableViewDataSource{
     }
 }
 extension DetailViewController: HomeTableViewCellDelegate{
+    func goToHashTag(tag: String) {
+        performSegue(withIdentifier: "Detail_HashTagSegue", sender: tag)
+    }
+    
     func goToCommentVC(postId : String) {
         performSegue(withIdentifier: "Detail_CommentSegue", sender: postId)
     }

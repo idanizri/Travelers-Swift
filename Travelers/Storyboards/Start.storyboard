@@ -99,6 +99,88 @@
             </objects>
             <point key="canvasLocation" x="57" y="104"/>
         </scene>
+        <!--Walk Through View Controller-->
+        <scene sceneID="Xgl-Au-a1L">
+            <objects>
+                <pageViewController storyboardIdentifier="WalkThroughViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="KSV-rC-N0I" customClass="WalkThroughViewController" customModule="Travelers" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qGl-a1-WGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1548" y="723"/>
+        </scene>
+        <!--Walk Through Content View Controller-->
+        <scene sceneID="xl4-bv-As0">
+            <objects>
+                <viewController storyboardIdentifier="WalkThroughContentViewController" id="kQd-q7-6ki" customClass="WalkThroughContentViewController" customModule="Travelers" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rx3-Gt-jFD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="NUS-a9-9jA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travelers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sC-6E-WE9">
+                                <rect key="frame" x="62" y="61" width="251" height="49"/>
+                                <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="48"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Youre Travel App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cH5-Da-o9P">
+                                <rect key="frame" x="16" y="539" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="6k1-br-fFV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWS-8t-ZkA">
+                                <rect key="frame" x="330" y="629" width="61" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="mfE-9x-MQ9"/>
+                                    <constraint firstAttribute="height" constant="22" id="xEK-f7-EiL"/>
+                                </constraints>
+                                <state key="normal" image="arrow"/>
+                                <connections>
+                                    <action selector="nextButton_TouchUpInside:" destination="kQd-q7-6ki" eventType="touchUpInside" id="2Zc-N4-0Yj"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="GNK-c1-ieJ">
+                                <rect key="frame" x="168" y="614" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="fjf-dG-x8M"/>
+                                    <constraint firstAttribute="width" constant="39" id="pVQ-ho-niU"/>
+                                </constraints>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NUS-a9-9jA" firstAttribute="leading" secondItem="9BO-OM-DXn" secondAttribute="leading" id="2Fs-7X-kHw"/>
+                            <constraint firstItem="NUS-a9-9jA" firstAttribute="trailing" secondItem="9BO-OM-DXn" secondAttribute="trailing" id="5zT-NI-VS9"/>
+                            <constraint firstItem="dWS-8t-ZkA" firstAttribute="trailing" secondItem="9BO-OM-DXn" secondAttribute="trailing" constant="16" id="H1L-KB-6Rm"/>
+                            <constraint firstItem="9BO-OM-DXn" firstAttribute="bottom" secondItem="GNK-c1-ieJ" secondAttribute="bottom" constant="16" id="Jdy-cb-LbB"/>
+                            <constraint firstItem="9BO-OM-DXn" firstAttribute="bottom" secondItem="dWS-8t-ZkA" secondAttribute="bottom" constant="16" id="SHD-JG-unk"/>
+                            <constraint firstItem="cH5-Da-o9P" firstAttribute="leading" secondItem="9BO-OM-DXn" secondAttribute="leading" constant="16" id="Uzs-7V-YEy"/>
+                            <constraint firstItem="NUS-a9-9jA" firstAttribute="top" secondItem="Rx3-Gt-jFD" secondAttribute="top" id="Ys5-KX-Wn6"/>
+                            <constraint firstItem="NUS-a9-9jA" firstAttribute="bottom" secondItem="9BO-OM-DXn" secondAttribute="bottom" id="eWX-iB-kl3"/>
+                            <constraint firstItem="0sC-6E-WE9" firstAttribute="centerX" secondItem="Rx3-Gt-jFD" secondAttribute="centerX" id="kPg-7A-s5n"/>
+                            <constraint firstItem="dWS-8t-ZkA" firstAttribute="top" secondItem="cH5-Da-o9P" secondAttribute="bottom" constant="30" id="nEX-wh-Hdp"/>
+                            <constraint firstItem="0sC-6E-WE9" firstAttribute="top" secondItem="9BO-OM-DXn" secondAttribute="top" constant="41" id="sM8-i5-Rz4"/>
+                            <constraint firstItem="GNK-c1-ieJ" firstAttribute="centerX" secondItem="Rx3-Gt-jFD" secondAttribute="centerX" id="wTV-e0-kbM"/>
+                            <constraint firstItem="cH5-Da-o9P" firstAttribute="trailing" secondItem="9BO-OM-DXn" secondAttribute="trailing" constant="16" id="ysl-1Y-Wig"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9BO-OM-DXn"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImg" destination="NUS-a9-9jA" id="lTr-Bu-UbZ"/>
+                        <outlet property="contentLabel" destination="cH5-Da-o9P" id="UAu-rE-ZzL"/>
+                        <outlet property="forwardButton" destination="dWS-8t-ZkA" id="I8x-Hm-kXB"/>
+                        <outlet property="pageControl" destination="GNK-c1-ieJ" id="h5S-fP-KeF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pVY-g6-e7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-727.20000000000005" y="722.78860569715152"/>
+        </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="2Ob-aP-ac8">
             <objects>
@@ -165,7 +247,7 @@
                                     <action selector="dismiss_OnClick:" destination="zFv-6K-WzJ" eventType="touchUpInside" id="Yyy-kN-H6i"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="cjq-J5-GsY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="cjq-J5-GsY">
                                 <rect key="frame" x="147.5" y="63" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="VGf-fw-wa8"/>
@@ -210,9 +292,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow" width="24" height="20"/>
+        <image name="background1" width="1242" height="2208"/>
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JFW-cY-lNs"/>
+        <segue reference="tcW-nt-VWg"/>
     </inferredMetricsTieBreakers>
 </document>

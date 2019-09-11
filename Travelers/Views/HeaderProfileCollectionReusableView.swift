@@ -28,6 +28,12 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             updateView()
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        clear()
+    }
+    
     //set the user info to the collection view in the profile view
     func updateView(){
         self.nameLabel.text = user!.username
@@ -63,6 +69,13 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
     @objc func goToSettingVC(){
         delegate2?.goToSettingVC()
+    }
+    
+    func clear(){
+        self.nameLabel.text = ""
+        self.myPostsCountLabel.text = ""
+        self.followersCountLabel.text = ""
+        self.followingCountLabel.text = ""
     }
     
     func updateStateFollowButton(){
